@@ -20,9 +20,13 @@ def emo_detector():
     disgust_score = response['disgust']
     dominant_emotion = response['dominant_emotion']
 
-    result = f"For the given statement, the system response is \'anger\': {anger_score}, \'disgust\': {disgust_score}, \
-    \'fear\': {fear_score}, \'joy\': {joy_score}, \'sadness\': {sadness_score}. The dominant emotion is <b>{dominant_emotion}</b>"
-
+    # error handling part b
+    if dominant_emotion == None:
+        result = "Invalid text! Please try again!"
+    else:
+        result = f"For the given statement, the system response is \'anger\': {anger_score}, \'disgust\': {disgust_score}, \
+        \'fear\': {fear_score}, \'joy\': {joy_score}, \'sadness\': {sadness_score}. The dominant emotion is <b>{dominant_emotion}</b>"
+    
     return result    
 
 @app.route("/")
